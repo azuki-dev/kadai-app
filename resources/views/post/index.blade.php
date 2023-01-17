@@ -20,6 +20,13 @@
             <div class="post-button">
                 <button class="button-white" type="submit">投稿する</button>
             </div>
+            @error('postContent')
+                  <div class="mt-3">
+                      <p class="text-red-500">
+                          {{ $message }}
+                      </p>
+                  </div>
+              @enderror
         </form>
     </div>
 </body>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\Models\Post;
 use App\Http\Controllers\Controller,
     Session;
@@ -37,6 +38,14 @@ class PostController extends Controller
 
         // ログイン中のユーザーの情報を取得する
         $loginUser = Session::get('user');
+
+        $rules = [
+            'postContent' => 'required|max:140',
+          ];
+
+          $messages = ['required' => '必須項目です', 'max' => '140文字以下にしてください。'];
+         
+          Validator::make($request->all(), $rules, $messages)->validate();
 
         // データ登録
         $post = new Post;
