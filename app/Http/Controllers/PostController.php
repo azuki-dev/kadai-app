@@ -47,6 +47,7 @@ class PostController extends Controller
          
           Validator::make($request->all(), $rules, $messages)->validate();
 
+
         // データ登録
         $post = new Post;
         $post->user = $loginUser->id;
