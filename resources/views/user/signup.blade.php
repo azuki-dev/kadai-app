@@ -58,39 +58,39 @@
   <script>
             window.onload = function(){
                 /*各画面オブジェクト*/
-                const btnSubmit = document.getElementById('btnSubmit');
-                const InputName = document.getElementById('InputName');
-                const InputEmail = document.getElementById('InputEmail');
-                const InputPassword = document.getElementById('InputPassword');
+            btnSubmit.addEventListener('click', function(event) {
+             const btnSubmit = document.getElementById('btnSubmit');
+             const InputName = document.getElementById('InputName');
+             const InputEmail = document.getElementById('InputEmail');
+             const InputPassword = document.getElementById('InputPassword');
+             const max_length = 5;
+             const count = (InputName . value) .length;
+             const Passreg = /^(?=.*[A-Z])[a-zA-Z0-9.?/-]{8,}$/;
                 
-                btnSubmit.addEventListener('click', function(event) {
-                    let message = [];
-                    /*入力値チェック*/
-                    const Namereg = /{140,}/;
-                    const Passreg = /^(?=.*[A-Z])[a-zA-Z0-9.?/-]{8,}$/;
+                let message = [];
 
-
-                    if(InputName.value ==""){
-                        message.push("氏名が未入力です。");
-                    }else if(!Namereg.test(InputName.value)){
-                        message.push("使用できない文字が入っています。");
-                    }
-                    if(InputEmail.value==""){
-                        message.push("メールアドレスが未入力です。");
-                    }else if(AND()) {
-                        message.push("メールアドレスの形式が不正です。");
-                    }
-                    if(InputPassword.value=="") {
-                        message.push("パスワードが未入力です。");
-                    } else if(!Passreg.test(InputPassword.value)){
-                        message.push("パスワードの大文字小文字2つずつ入れてください。");
-                    }
-                    if(message.length > 0){
-                        alert(message);
-                        return;
-                    }
-                    alert('送信成功');
-                });
+                if(InputName.value ==""){
+                    message.push("氏名が未入力です。");
+                }
+                if(count > max_length){
+                    message.push(" 5文字以内にしてください。");
+                }
+                if(InputEmail.value==""){
+                    message.push("メールアドレスが未入力です。");
+                }else if(AND()) {
+                    message.push("メールアドレスの形式が不正です。");
+                }
+                if(InputPassword.value=="") {
+                    message.push("パスワードが未入力です。");
+                } else if(!Passreg.test(InputPassword.value)){
+                    message.push("パスワードの大文字小文字2つずつ入れてください。");
+                }
+                if(message.length > 0){
+                    alert(message);
+                    return;
+                }
+                alert('送信成功');
+            });
             };
         </script>
   </div>

@@ -128,11 +128,11 @@ class UserController extends Controller
     // バリデーション
     $rules = [
         'name' => 'required',
-        'email' => 'required|email:filter',
+        'email' => 'required|email:filter|unique:users,email',
         'password' => 'required|min:8|',
         ];
 
-        $messages = ['required' => '必須項目です', 'min' => '8文字以上にしてください。' ,'email' => 'メールアドレスを入力してください'];
+        $messages = ['required' => '必須項目です', 'min' => '8文字以上にしてください。' ,'email' => 'メールアドレスを入力してください','unique' => '別のアドレスを使用してください。'];
          
         Validator::make($request->all(), $rules, $messages)->validate();
  
