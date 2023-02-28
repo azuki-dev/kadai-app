@@ -64,7 +64,7 @@
              const InputEmail = document.getElementById('InputEmail');
              const InputPassword = document.getElementById('InputPassword');
              const max_length = 5;
-             const count = (InputName . value) .length;
+             const count = (Input . value) .length;
              const Passreg = /^(?=.*[A-Z])[a-zA-Z0-9.?/-]{8,}$/;
                 
                 let message = [];

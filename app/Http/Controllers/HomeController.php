@@ -47,6 +47,7 @@ class HomeController extends Controller
      */
     private function sort($array)
     {
+        $standard_key_array = array();
         foreach ($array as $key => $value) {
             $standard_key_array[$key] = $value['post']['created_at'];
         }

@@ -132,7 +132,7 @@ class UserController extends Controller
         'password' => 'required|min:8|',
         ];
 
-        $messages = ['required' => '必須項目です', 'min' => '8文字以上にしてください。' ,'email' => 'メールアドレスを入力してください','unique' => '別のアドレスを使用してください。'];
+        $messages = ['required' => '必須項目です', 'min' => '8文字以上にしてください。' ,'email' => 'メールアドレスを入力してください','unique' => 'このメールアドレスはすでに使用されています'];
          
         Validator::make($request->all(), $rules, $messages)->validate();
  
@@ -143,7 +143,7 @@ class UserController extends Controller
         $user->password = $request->password;
         $user->save();
 
-
-    return redirect ('/edit');
+    Session::put('user', $user);
+    return redirect ('/');
     }
 }
